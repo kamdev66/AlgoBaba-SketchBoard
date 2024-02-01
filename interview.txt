@@ -1,0 +1,14 @@
+1. we have structured UI using html and css
+2. Canvas
+3. i have used getcssscan for box shadow and flatuicolors for background color
+4. svg-scalable vector graphics
+5. hamburger ko hide krke cross dikhana hai to , hum options-cont class
+ko access krke uske children ke class ko change kr denge
+<div class="options-cont">
+        <i class="fas fa-bars" style="color: #B197FC;"></i>
+</div>
+see here,isme ek hi children hai isliye 
+let optionsCont = document.querySelector(".options-cont");
+let iconElem = optionsCont.children[0];
+
+6. 
