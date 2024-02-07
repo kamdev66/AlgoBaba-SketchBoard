@@ -1,8 +1,18 @@
 const express = require("express");  // Access
 const socket = require("socket.io");
 const path = require('path');
+const cors = require("cors");
 
 const app = express(); //Initialized and server ready
+
+const corsOptions ={
+    origin:['https://algo-baba-sketch-board.vercel.app/','http://localhost:5000'], 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+// Enable CORS
+app.use(cors(corsOptions));
+
 
 // app.use(express.static("public"));
 
@@ -19,7 +29,14 @@ let server = app.listen(port, () => {
     console.log("Listening to port" + port);
 })
 
-let io = socket(server);
+// let io = socket(server);
+// Create a new instance of Socket.IO and apply CORS middleware to it
+const io = socket(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
 
 io.on("connection", (socket) => {
     console.log("Made socket connection");
