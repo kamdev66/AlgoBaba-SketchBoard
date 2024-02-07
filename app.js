@@ -1,5 +1,6 @@
 const express = require("express");  // Access
 const socket = require("socket.io");
+const path = require('path');
 
 const app = express(); //Initialized and server ready
 
