@@ -5,15 +5,15 @@ const app = express(); //Initialized and server ready
 
 app.use(express.static("public"));
 
+// Define a route handler for the root path ("/")
+app.get('/', async(req, res) => {
+   await res.sendFile(__dirname + '/public/index.html');
+});
+
 let port = process.env.PORT || 5000;
 let server = app.listen(port, () => {
     console.log("Listening to port" + port);
 })
-
-// Define a route handler for the root path ("/")
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
 
 let io = socket(server);
 
