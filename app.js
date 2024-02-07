@@ -3,11 +3,14 @@ const socket = require("socket.io");
 
 const app = express(); //Initialized and server ready
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
+
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, "public")));
 
 // Define a route handler for the root path ("/")
-app.get('/', async(req, res) => {
-   await res.sendFile(__dirname + '/public/index.html');
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 let port = process.env.PORT || 5000;
