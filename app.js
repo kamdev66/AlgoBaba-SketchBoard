@@ -1,4 +1,4 @@
-const express = require("express"); // Access
+const express = require("express");  // Access
 const socket = require("socket.io");
 
 const app = express(); //Initialized and server ready
@@ -9,6 +9,11 @@ let port = process.env.PORT || 5000;
 let server = app.listen(port, () => {
     console.log("Listening to port" + port);
 })
+
+// Define a route handler for the root path ("/")
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
 let io = socket(server);
 
